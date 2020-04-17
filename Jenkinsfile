@@ -1,10 +1,6 @@
 pipeline {
   agent any
 
-  environment {
-    APPIUM_PORT= 5555
-  }
-
   tools {
     gradle "Gradle"
   }
@@ -20,8 +16,6 @@ pipeline {
 
     stage('Run test') {
       steps {
-        echo "Start appium server"
-        sh "appium --port ${4723}"
         git 'https://github.com/ksilins/app.forcastie.git'
         sh 'gradle build'
       }
@@ -30,8 +24,6 @@ pipeline {
 
   post {
     always {
-      echo "Stop appium server"
-      sh "kill \$(lsof -t -i :${4723})"
       script {
         allure([
           includeProperties: false,
