@@ -47,7 +47,7 @@ public class BasePage {
         DesiredCapabilities capability = new DesiredCapabilities();
 
         capability.setCapability(CapabilityType.VERSION, "9");
-        capability.setCapability("app", "/Users/user/app.apk");
+        capability.setCapability("app", "/Users/user/app-debug.apk");
         capability.setCapability("deviceName", "S8");
         capability.setCapability("platformName", "Android");
         capability.setCapability("appPackage", "cz.martykan.forecastie");
