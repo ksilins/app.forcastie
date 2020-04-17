@@ -26,20 +26,20 @@ pipeline {
         sh 'gradle build'
       }
     }
+  }
 
-    post {
-      always {
-        echo "Stop appium server"
-        sh "kill \$(lsof -t -i :${4723})"
-        script {
-          allure([
-            includeProperties: false,
-            jdk: '',
-            properties: [],
-            reportBuildPolicy: 'ALWAYS',
-            results: [[path: 'allure-results']]
-          ])
-        }
+  post {
+    always {
+      echo "Stop appium server"
+      sh "kill \$(lsof -t -i :${4723})"
+      script {
+        allure([
+          includeProperties: false,
+          jdk: '',
+          properties: [],
+          reportBuildPolicy: 'ALWAYS',
+          results: [[path: 'allure-results']]
+        ])
       }
     }
   }
